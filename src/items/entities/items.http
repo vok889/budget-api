@@ -15,3 +15,12 @@ GET http://localhost:3000/items
 
 ### find one
 GET http://localhost:3000/items/1
+
+### update
+PATCH http://localhost:3000/items/2
+Content-Type: application/json
+
+{
+    "title": "Mouse wireless",
+    "contactMobileNo": "0891234567"
+}

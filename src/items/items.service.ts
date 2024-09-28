@@ -24,10 +24,21 @@ export class ItemsService {
     return this.itemRepository.findOneBy({ id });
   }
 
-  update(id: number, updateItemDto: UpdateItemDto) {
-    return `This action updates a #${id} item`;
-  }
 
+  update(id: number, updateItemDto: UpdateItemDto) {
+    // => { id, title, contectMobileNo }
+    // update item set tile = '', con = '' where id = ?
+
+    // const updateItem = {
+    //   id: id,
+    //   title: updateItemDto.title,
+    //   contactMobileNo = updateItemDto.contactMobileNo
+    //   status: updateItemDto.state
+    // }  
+    return this.itemRepository.save({
+      id, ...updateItemDto
+    })
+  }
   remove(id: number) {
     return `This action removes a #${id} item`;
   }
