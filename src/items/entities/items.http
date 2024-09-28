@@ -4,7 +4,7 @@ POST http://localhost:3000/items
 Content-Type: application/json
 
 {
-    "title": "Mouse",
+    "title": "Mouse7",
     "amount": 10,
     "price": 5000,
     "contactMobileNo": "0891234567"
@@ -26,4 +26,8 @@ Content-Type: application/json
 }
 
 ### delete
-DELETE http://localhost:3000/items/1
+DELETE http://localhost:3000/items/2
+
+
+### find one by string
+GET http://localhost:3000/items/A
