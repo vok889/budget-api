@@ -1,11 +1,17 @@
-###
+# items.http
+### create
 POST http://localhost:3000/items
 Content-Type: application/json
 
 {
-    "title": "Mouse3",
+    "title": "Mouse",
     "amount": 10,
     "price": 5000,
     "contactMobileNo": "0891234567"
-
 }
+
+### find all
+GET http://localhost:3000/items
+
+### find one
+GET http://localhost:3000/items/1
