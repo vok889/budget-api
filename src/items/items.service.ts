@@ -39,7 +39,9 @@ export class ItemsService {
       id, ...updateItemDto
     })
   }
+
   remove(id: number) {
-    return `This action removes a #${id} item`;
+    // const where = { id: id}
+    return this.itemRepository.delete({ id })               
   }
 }
