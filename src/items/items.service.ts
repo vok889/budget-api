@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateItemDto } from './dto/create-item.dto';
 import { UpdateItemDto } from './dto/update-item.dto';
 import { Repository } from 'typeorm';
@@ -40,8 +40,12 @@ export class ItemsService {
     })
   }
 
-  remove(id: number) {
-    // const where = { id: id}
-    return this.itemRepository.delete({ id })               
+  async remove(id: number) {
+    const item = await this.itemRepository.findOneBy({ id })
+    if (!item) {
+      throw new NotFoundException(`Not found: id=${id}`)
+    }
+
+    return this.itemRepository.delete({ id })
   }
 }
