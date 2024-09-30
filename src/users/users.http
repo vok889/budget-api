@@ -7,3 +7,32 @@ Content-Type: application/json
     "password": "changeit",
     "role": "USER"
 }
+
+### create
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "username": "u1006",
+    "password": "changeit",
+    "role": "USER"
+}
+
+### create
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "username": "u1005",
+    "password": "changeit",
+    "role": "APPROVER"
+}
+
+### auth login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "username": "u1006",
+    "password": "changeit"
+}
