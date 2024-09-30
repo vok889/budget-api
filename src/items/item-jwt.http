@@ -1,0 +1,19 @@
+# items-jwt.http
+### auth login
+
+# @name login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "username": "u1006",
+    "password": "changeit"
+}
+
+###
+@authToken = {{login.response.body.access_token}}
+
+
+### find all
+GET http://localhost:3000/items
+Authorization: Bearer {{authToken}}
