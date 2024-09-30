@@ -36,3 +36,16 @@ Content-Type: application/json
     "username": "u1006",
     "password": "changeit"
 }
+
+###
+### Admin Zone
+###
+### create
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "username": "a1001",
+    "password": "changeit",
+    "role": "ADMIN"
+}

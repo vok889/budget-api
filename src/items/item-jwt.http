@@ -1,4 +1,5 @@
 # items-jwt.http
+
 ### auth login
 
 # @name login
@@ -19,15 +20,26 @@ GET http://localhost:3000/items
 Authorization: Bearer {{authToken}}
 
 
-### find all with static jwt
-GET http://localhost:3000/items
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywidXNlcm5hbWUiOiJ1MTAwNiIsInJvbGUiOiJVU0VSIiwic3ViIjo3LCJpYXQiOjE3Mjc3MDU4NDV9.g9My7bo039yYoYP1tMg3TNPsy_PRUZpIgoEYvoMkDTU
-
-
-### find all with invalid jwt
-GET http://localhost:3000/items
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywidXNlcm5hbWUiOiJ1MTAwNiIsInJvbGUiOiJVU0VSIiwic3ViIjo3LCJpYXQiOjE3Mjc3MDE0NTh9.6nVoU3NazKVijuhNclLtm1nil8UAeflXjPHFIzm_MGs
-
 ### approve
 PATCH http://localhost:3000/items/3/approve
 Authorization: Bearer {{authToken}}
+
+
+###
+### Admin Zone
+###
+# @name loginAdmin
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "username": "a1001",
+    "password": "changeit"
+}
+
+###
+@authTokenAdmin = {{loginAdmin.response.body.access_token}}
+
+### find all
+PATCH http://localhost:3000/items/3/approve
+Authorization: Bearer {{authTokenAdmin}}
