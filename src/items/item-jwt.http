@@ -7,7 +7,7 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "username": "u1006",
+    "username": "u1001",
     "password": "changeit"
 }
 
@@ -43,6 +43,15 @@ Content-Type: application/json
 ### find all
 PATCH http://localhost:3000/items/3/approve
 Authorization: Bearer {{authTokenAdmin}}
+
+### find all with static jwt
+GET http://localhost:3000/items
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywidXNlcm5hbWUiOiJ1MTAwNiIsInJvbGUiOiJVU0VSIiwic3ViIjo3LCJpYXQiOjE3Mjc3MDU4NDV9.g9My7bo039yYoYP1tMg3TNPsy_PRUZpIgoEYvoMkDTU
+
+
+### find all with invalid jwt
+GET http://localhost:3000/items
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywidXNlcm5hbWUiOiJ1MTAwNiIsInJvbGUiOiJVU0VSIiwic3ViIjo3LCJpYXQiOjE3Mjc3MDE0NTh9.6nVoU3NazKVijuhNclLtm1nil8UAeflXjPHFIzm_MGs
 
 ###
 ### Manager Zone

@@ -50,3 +50,13 @@ Content-Type: application/json
     "amount": "SHOUD_BE_NUM",
     "price": 5000    
 }
+
+### create with wrong amount number type 2
+POST http://localhost:3000/items
+Content-Type: application/json
+
+{
+    "title": "Printer",
+    "amount": 10,
+    "price": "one hundren"   
+}
