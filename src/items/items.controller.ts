@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, UseGuards, ParseArrayPipe ,Query} from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, UseGuards, ParseArrayPipe ,Query, BadRequestException} from '@nestjs/common';
 import { ItemsService } from './items.service';
 import { CreateItemDto } from './dto/create-item.dto';
 import { UpdateItemDto } from './dto/update-item.dto';
@@ -6,6 +6,7 @@ import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
 import { Role } from 'src/users/entities/user.entity';
 import { Roles } from 'src/auth/decorators/roles.decorator';
+import { MsgParseIntPipe } from 'src/pipes/msg-parse-int.pipe';
 
 @Controller('items')
 export class ItemsController {
@@ -30,7 +31,7 @@ export class ItemsController {
 
   @Get(':id')
 
-  findOne(@Param('id', ParseIntPipe) id: string) {
+  findOne(@Param('id', new MsgParseIntPipe('จะต้องเป็นตัวเลขเท่านั้น')) id: string) {
     return this.itemsService.findOne(+id);
   }
 
@@ -40,7 +41,10 @@ export class ItemsController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  // remove(@Param('id') id: string) {
+  //   return this.itemsService.remove(+id);
+  // }
+  remove(@Param('id', new ParseIntPipe({ exceptionFactory: (errer: string) => (new BadRequestException(`id ควรเป็น int`)) })) id: string) {
     return this.itemsService.remove(+id);
   }
 
