@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { LoggedInDto } from './dto/logged-in.dto';
 import * as bcrypt from 'bcrypt';
 import { UsersService } from 'src/users/users.service';
@@ -8,18 +8,21 @@ import { ConfigService } from '@nestjs/config';
 @Injectable()
 export class AuthService {
 
+  private logger = new Logger();
+
   constructor(
     private usersService: UsersService, 
     private jwtService: JwtService,
     private configService: ConfigService
   ) {}
 
+
   async validateUser(username: string, password: string): Promise<LoggedInDto> {
 
     // find user by username
     const user = await this.usersService.findOneByUsername(username);
     if (!user) {
-      console.log(`user not found: username=${username}`)
+      this.logger.debug(`user not found: username=${username}`, AuthService.name)
       return null
     }
 
@@ -28,7 +31,7 @@ export class AuthService {
       const { password, ...userWithoutPassword} = user;
       return userWithoutPassword;
     } else {
-      console.log(`wrong password: username=${username}`)
+      this.logger.debug(`wrong password: username=${username}`)
       return null
     }
   }
