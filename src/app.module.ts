@@ -6,6 +6,7 @@ import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import dbConfig from './db/db.config'
 import { LoginLoggerMiddleware } from './middlewares/login-logger.middleware';
+import { BudgetModule } from './budget/budget.module';
 
 @Module({
   imports: [
@@ -13,7 +14,8 @@ import { LoginLoggerMiddleware } from './middlewares/login-logger.middleware';
     ConfigModule.forRoot({ isGlobal: true, load: [dbConfig] }), 
     DbModule, 
     UsersModule, 
-    AuthModule]
+    AuthModule, 
+    BudgetModule],
 })
 export class AppModule implements NestModule {  // Must learn more about NestModule
   configure(consumer: MiddlewareConsumer) {

@@ -1,0 +1,9 @@
+# external service
+###
+GET https://year-budget-api.onrender.com/budget/2024
+X-Auth-Token : peaxodds2024
+
+
+# call through our api
+###
+GET http://localhost:3000/budget/2024
