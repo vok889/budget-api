@@ -10,6 +10,10 @@ Content-Type: application/json
     "contactMobileNo": "0891234567"
 }
 
+
+### search by multi ids
+GET http://localhost:3000/items/search?ids=5,4
+
 ### find all
 GET http://localhost:3000/items
 

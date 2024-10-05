@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, UseGuards, ParseArrayPipe ,Query} from '@nestjs/common';
 import { ItemsService } from './items.service';
 import { CreateItemDto } from './dto/create-item.dto';
 import { UpdateItemDto } from './dto/update-item.dto';
@@ -14,6 +14,12 @@ export class ItemsController {
   @Post()
   create(@Body() createItemDto: CreateItemDto) {
     return this.itemsService.create(createItemDto);
+  }
+
+  @Get('search') // can change between where and NativeQuery
+  searchByIdsNativeQuery(@Query('ids', new ParseArrayPipe({ items: Number, separator: ',' })) ids: number[]) {
+    return this.itemsService.searchByIds(ids);
+    // return this.itemsService.searchByIdsNativeQuery(ids)
   }
 
   @UseGuards(JwtAuthGuard)
