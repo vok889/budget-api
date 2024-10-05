@@ -13,6 +13,9 @@ export class Item {
     
     @Column()
     title: string;
+        
+    @Column()
+    description: string;
 
     @Column()
     amount: number;

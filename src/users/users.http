@@ -8,6 +8,17 @@ Content-Type: application/json
     "role": "USER"
 }
 
+### create with description
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "username": "u1007",
+    "password": "changeit",
+    "role": "USER",
+    "description": "general user"
+}
+
 ### create
 POST http://localhost:3000/users
 Content-Type: application/json

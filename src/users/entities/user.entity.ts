@@ -17,6 +17,11 @@ export class User {
     })
     username: string;
 
+    @Column({
+        nullable: true
+      })
+      description: string; // add
+
     @Column()
     password: string;
 
