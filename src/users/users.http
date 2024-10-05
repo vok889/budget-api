@@ -49,3 +49,16 @@ Content-Type: application/json
     "password": "changeit",
     "role": "ADMIN"
 }
+
+###
+### MANAGER Zone
+###
+### create
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "username": "m1001",
+    "password": "changeit",
+    "role": "MANAGER"
+}
