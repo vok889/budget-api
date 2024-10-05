@@ -31,7 +31,7 @@ export class AuthService {
       const { password, ...userWithoutPassword} = user;
       return userWithoutPassword;
     } else {
-      this.logger.debug(`wrong password: username=${username}`)
+      this.logger.debug(`wrong password: username=${username}`, AuthService.name)
       return null
     }
   }
