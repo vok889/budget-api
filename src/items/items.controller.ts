@@ -17,9 +17,9 @@ export class ItemsController {
   }
 
   @Get('search') // can change between where and NativeQuery
-  searchByIdsNativeQuery(@Query('ids', new ParseArrayPipe({ items: Number, separator: ',' })) ids: number[]) {
-    return this.itemsService.searchByIds(ids);
-    // return this.itemsService.searchByIdsNativeQuery(ids)
+  searchByIds(@Query('ids', new ParseArrayPipe({ items: Number, separator: ',' })) ids: number[]) {
+    // return this.itemsService.searchByIds(ids);
+    return this.itemsService.searchByIdsNativeQuery(ids)
   }
 
   @UseGuards(JwtAuthGuard)
