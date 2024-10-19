@@ -14,8 +14,8 @@ export class Item {
     @Column()
     title: string;
         
-    // @Column()
-    // description: string;
+    @Column()
+    description: string;
 
     @Column()
     amount: number;
@@ -24,6 +24,7 @@ export class Item {
     price: number;
 
     @Column({
+        name:"contact_mobile_no", // add
         nullable: true
     })
     contactMobileNo: string;

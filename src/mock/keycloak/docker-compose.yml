@@ -1,0 +1,16 @@
+# mock/keycloak/docker-compose.yml
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:23.0.5
+    ports:
+      - 9090:8080
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    volumes:
+      - keycloakdata:/opt/keycloak/
+    command: start-dev
+
+volumes:
+  keycloakdata:
+    driver: local
